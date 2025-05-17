@@ -1,26 +1,22 @@
 const express = require('express');
 const mongodb = require('./data/database');
 const app = express();
+const setupSwagger = require('./swagger');
 
 const port = process.env.PORT || 8080;
 
 app.use(express.json());
 
-app.use('/', require('./routes'));
-
-app.use(express.json());
-
-// Swagger
-const setupSwagger = require('./swagger');
 setupSwagger(app);
 
-app.use('/', require('./routes'));
+app.use('/contacts', require('./routes/contacts'));
 
 mongodb.initDb((err) => {
-  if(err) {
+  if (err) {
     console.log(err);
-  }
-  else {
-    app.listen(port, () => {console.log(`Database listening and Server running at http://localhost:${port}`)});
+  } else {
+    app.listen(port, () => {
+      console.log(`Server is running at http://localhost:${port}`);
+    });
   }
 });

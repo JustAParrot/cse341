@@ -1,0 +1,36 @@
+### Get all contacts
+GET https://cse341-evvf.onrender.com/contacts
+
+
+### Get a single contact by ID
+GET https://cse341-evvf.onrender.com/contacts/1
+
+
+### Create a new contact
+POST https://cse341-evvf.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Bruce",
+  "lastName": "Wayne",
+  "email": "batman@wayneenterprises.com",
+  "favoriteColor": "Black",
+  "birthday": "1972-02-19"
+}
+
+
+### Update a contact by ID
+PUT https://cse341-evvf.onrender.com/contacts/1
+Content-Type: application/json
+
+{
+  "firstName": "Batman",
+  "lastName": "Wayne",
+  "email": "darkknight@justiceleague.org",
+  "favoriteColor": "Dark Gray",
+  "birthday": "1972-02-19"
+}
+
+
+### Delete a contact by ID
+DELETE https://cse341-evvf.onrender.com/contacts/1

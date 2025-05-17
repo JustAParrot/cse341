@@ -1,60 +1,40 @@
 const express = require('express');
 const router = express.Router();
-
-const usersController = require('../controllers/users');
-
-// GET - all users
-router.get('/', usersController.getAll);
-
-// GET - single user by ID
-router.get('/:id', usersController.getSingle);
-
-// POST - Create new user
-router.post('/', usersController.createUser);
-
-// PUT - Update user by ID
-router.put('/:id', usersController.updateUser);
-
-// DELETE - Remove user by ID
-router.delete('/:id', usersController.deleteUser);
-
-module.exports = router;
-
-
-// Swagger
+const contactsController = require('../controllers/contacts');
 
 /**
  * @swagger
- * /users:
+ * /contacts:
  *   get:
- *     summary: Get all users
+ *     summary: Get all contacts
  *     responses:
  *       200:
- *         description: Returns a list of users
+ *         description: List of contacts
  */
+router.get('/', contactsController.getAll);
 
 /**
  * @swagger
- * /users/{id}:
+ * /contacts/{id}:
  *   get:
- *     summary: Get a single user by ID
+ *     summary: Get a contact by ID
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The user ID
  *     responses:
  *       200:
- *         description: Returns a single user
+ *         description: A contact object
  */
+router.get('/:id', contactsController.getSingle);
 
 /**
  * @swagger
- * /users:
+ * /contacts:
  *   post:
- *     summary: Create a new user
+ *     summary: Create a new contact
  *     requestBody:
  *       required: true
  *       content:
@@ -62,26 +42,33 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
+ *               - firstName
+ *               - lastName
  *               - email
- *               - password
+ *               - favoriteColor
+ *               - birthday
  *             properties:
- *               name:
+ *               firstName:
+ *                 type: string
+ *               lastName:
  *                 type: string
  *               email:
  *                 type: string
- *               password:
+ *               favoriteColor:
+ *                 type: string
+ *               birthday:
  *                 type: string
  *     responses:
  *       201:
- *         description: User created
+ *         description: Contact created
  */
+router.post('/', contactsController.createContact);
 
 /**
  * @swagger
- * /users/{id}:
+ * /contacts/{id}:
  *   put:
- *     summary: Update an existing user
+ *     summary: Update a contact by ID
  *     parameters:
  *       - in: path
  *         name: id
@@ -95,26 +82,33 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
+ *               - firstName
+ *               - lastName
  *               - email
- *               - password
+ *               - favoriteColor
+ *               - birthday
  *             properties:
- *               name:
+ *               firstName:
+ *                 type: string
+ *               lastName:
  *                 type: string
  *               email:
  *                 type: string
- *               password:
+ *               favoriteColor:
+ *                 type: string
+ *               birthday:
  *                 type: string
  *     responses:
  *       204:
- *         description: User updated
+ *         description: Contact updated
  */
+router.put('/:id', contactsController.updateContact);
 
 /**
  * @swagger
- * /users/{id}:
+ * /contacts/{id}:
  *   delete:
- *     summary: Delete a user
+ *     summary: Delete a contact by ID
  *     parameters:
  *       - in: path
  *         name: id
@@ -123,5 +117,8 @@ module.exports = router;
  *           type: string
  *     responses:
  *       204:
- *         description: User deleted
+ *         description: Contact deleted
  */
+router.delete('/:id', contactsController.deleteContact);
+
+module.exports = router;
