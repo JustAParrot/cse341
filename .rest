@@ -1,0 +1,11 @@
+### Get home page
+GET https://cse341-evvf.onrender.com
+
+### Post example
+POST https://cse341-evvf.onrender.com/users
+Content-Type: application/json
+
+{
+  "name": "Robert Baratheon",
+  "email": "mark_addy@gameofthron.es"
+}
