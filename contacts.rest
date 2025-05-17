@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### Update a contact by ID
-PUT https://cse341-evvf.onrender.com/contacts/1
+PUT https://cse341-evvf.onrender.com/contacts/68290b6e56bd9aaa7cb543d1
 Content-Type: application/json
 
 {
@@ -28,9 +28,9 @@ Content-Type: application/json
   "lastName": "Wayne",
   "email": "darkknight@justiceleague.org",
   "favoriteColor": "Dark Gray",
-  "birthday": "1805-12-23"
+  "birthday": "1999-12-25"
 }
 
 
 ### Delete a contact by ID
-DELETE https://cse341-evvf.onrender.com/contacts/1
+DELETE https://cse341-evvf.onrender.com/contacts/68290b6e56bd9aaa7cb543d1
