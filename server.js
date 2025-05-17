@@ -8,6 +8,14 @@ app.use(express.json());
 
 app.use('/', require('./routes'));
 
+app.use(express.json());
+
+// Swagger
+const setupSwagger = require('./swagger');
+setupSwagger(app);
+
+app.use('/', require('./routes'));
+
 mongodb.initDb((err) => {
   if(err) {
     console.log(err);
