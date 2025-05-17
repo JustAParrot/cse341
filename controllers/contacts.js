@@ -19,6 +19,8 @@ const getSingle = async (req, res) => {
 };
 
 const createContact = async (req, res) => {
+  console.log("📦 Connected DB Name:", mongodb.getDatabase().db().databaseName);
+
   const { firstName, lastName, email, favoriteColor, birthday } = req.body;
 
   if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
@@ -34,10 +36,12 @@ const createContact = async (req, res) => {
     if (err.code === 11000) {
       res.status(409).json({ error: 'Email already exists.' });
     } else {
+      console.error(err);
       res.status(500).json({ error: 'An error occurred while creating the contact.' });
     }
   }
 };
+
 
 const updateContact = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
