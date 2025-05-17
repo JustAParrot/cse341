@@ -19,8 +19,6 @@ const getSingle = async (req, res) => {
 };
 
 const createContact = async (req, res) => {
-  console.log("📦 Connected DB Name:", mongodb.getDatabase().db().databaseName);
-
   const { firstName, lastName, email, favoriteColor, birthday } = req.body;
 
   if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
@@ -30,7 +28,7 @@ const createContact = async (req, res) => {
   const newContact = { firstName, lastName, email, favoriteColor, birthday };
 
   try {
-    const result = await mongodb.getDatabase().db().collection('contacts').insertOne(newContact);
+    const result = await mongodb.getDatabase().collection('contacts').insertOne(newContact);
     res.status(201).json({ id: result.insertedId });
   } catch (err) {
     if (err.code === 11000) {
@@ -41,6 +39,7 @@ const createContact = async (req, res) => {
     }
   }
 };
+
 
 
 const updateContact = async (req, res) => {
