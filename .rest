@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### Update a user by ID
-PUT https://cse341-evvf.onrender.com/users/59b99db4cfa9a34dcd7885b6
+PUT https://cse341-evvf.onrender.com/users/59b99dbacfa9a34dcd7885c1
 Content-Type: application/json
 
 {
