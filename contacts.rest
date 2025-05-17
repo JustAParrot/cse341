@@ -11,9 +11,9 @@ POST https://cse341-evvf.onrender.com/contacts
 Content-Type: application/json
 
 {
-  "firstName": "Bruce",
-  "lastName": "Wayne",
-  "email": "batman@wayneenterprises.com",
+  "firstName": "Joseph",
+  "lastName": "Smith",
+  "email": "randomprophet@lds.org",
   "favoriteColor": "Black",
   "birthday": "1972-02-19"
 }
@@ -28,7 +28,7 @@ Content-Type: application/json
   "lastName": "Wayne",
   "email": "darkknight@justiceleague.org",
   "favoriteColor": "Dark Gray",
-  "birthday": "1972-02-19"
+  "birthday": "1805-12-23"
 }
 
 
