@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
-  const result = await mongodb.getDatabase().db().collection('contacts').find();
+  const result = await mongodb.getDatabase().collection('contacts').find();
   result.toArray().then((contacts) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(contacts);
@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
 
 const getSingle = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
-  const result = await mongodb.getDatabase().db().collection('contacts').find({ _id: contactId });
+  const result = await mongodb.getDatabase().collection('contacts').find({ _id: contactId });
   result.toArray().then((contacts) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(contacts[0]);
@@ -40,8 +40,6 @@ const createContact = async (req, res) => {
   }
 };
 
-
-
 const updateContact = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
   const { firstName, lastName, email, favoriteColor, birthday } = req.body;
@@ -51,19 +49,19 @@ const updateContact = async (req, res) => {
   }
 
   const updatedContact = { firstName, lastName, email, favoriteColor, birthday };
-  const result = await mongodb.getDatabase().db().collection('contacts').updateOne(
+  const result = await mongodb.getDatabase().collection('contacts').updateOne(
     { _id: contactId },
     { $set: updatedContact }
   );
 
-  res.status(204).send(); 
+  res.status(204).send();
 };
 
 const deleteContact = async (req, res) => {
   const contactId = new ObjectId(req.params.id);
-  const result = await mongodb.getDatabase().db().collection('contacts').deleteOne({ _id: contactId });
+  const result = await mongodb.getDatabase().collection('contacts').deleteOne({ _id: contactId });
 
-  res.status(204).send(); 
+  res.status(204).send();
 };
 
 module.exports = {
