@@ -9,13 +9,13 @@ POST https://cse341-evvf.onrender.com/users
 Content-Type: application/json
 
 {
-  "name": "Peter Parker",
-  "email": "peter@dailybugle.com",
-  "password": "SpiderMan123"
+  "name": "Cute Bird",
+  "email": "mrcrow@yahoo.es",
+  "password": "lovefries123"
 }
 
 ### Update a user by ID
-PUT https://cse341-evvf.onrender.com/users/{{userId}}
+PUT https://cse341-evvf.onrender.com/users/59b99dbacfa9a34dcd7885c1
 Content-Type: application/json
 
 {
@@ -25,4 +25,4 @@ Content-Type: application/json
 }
 
 ### Delete a user by ID
-DELETE https://cse341-evvf.onrender.com/users/{{userId}}
+DELETE https://cse341-evvf.onrender.com/users/59b99db9cfa9a34dcd7885bf

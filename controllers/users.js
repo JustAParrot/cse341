@@ -44,14 +44,14 @@ const updateUser = async (req, res) => {
         { $set: updatedUser }
     );
 
-    res.status(204).send(); // Success, no content returned
+    res.status(204).send(); 
 };
 
 const deleteUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('users').deleteOne({ _id: userId });
 
-    res.status(204).send(); // Success, no content returned
+    res.status(204).send(); 
 };
 
 module.exports = {
