@@ -22,4 +22,4 @@ Content-Type: application/json
 }
 
 ### DELETE
-DELETE https://cse341-s9x3.onrender.com/pokemons/pokemons/6832249281a22867a131d762
+DELETE https://cse341-s9x3.onrender.com/pokemons/6832249281a22867a131d762
