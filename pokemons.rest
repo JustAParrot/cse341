@@ -1,8 +1,8 @@
 ### Get all Pokémon
-GET http://localhost:8080/pokemons
+GET https://cse341-s9x3.onrender.com/pokemons
 
 ### Create a Pokémon
-POST http://localhost:8080/pokemons
+POST https://cse341-s9x3.onrender.com/pokemons
 Content-Type: application/json
 
 {
