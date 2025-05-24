@@ -1,19 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongodb = require('./data/database');
-const setupSwagger = require('./swagger');
-
-
-setupSwagger(app);
 
 dotenv.config();
-const app = express();
-const port = process.env.PORT || 8080;
+const app = express(); 
 
 app.use(express.json());
 
-// Routes
+const setupSwagger = require('./swagger'); 
+setupSwagger(app); 
+
 app.use('/pokemons', require('./routes/pokemons'));
+
+const port = process.env.PORT || 8080;
 
 mongodb.initDb((err) => {
   if (err) {
