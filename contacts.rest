@@ -34,3 +34,15 @@ Content-Type: application/json
 
 ### Delete a contact by ID
 DELETE https://cse341-evvf.onrender.com/contacts/6829188589a379815e78ced1
+
+
+### Create with missing email
+### If I did this properly, it will return a 400 error
+POST https://cse341-evvf.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "NoEmail",
+  "lastName": "User"
+}
+

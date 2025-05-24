@@ -1,6 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const contactsController = require('../controllers/contacts');
+const { body, param, validationResult } = require('express-validator');
+
+function validate(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+}
+
+router.get('/:id',
+  param('id').isMongoId().withMessage('Invalid ID format'),
+  validate,
+  contactsController.getSingle
+);
+
+router.post('/',
+  body('firstName').notEmpty().withMessage('First name required'),
+  body('lastName').notEmpty().withMessage('Last name required'),
+  body('email').isEmail().withMessage('Valid email required'),
+  validate,
+  contactsController.createContact
+);
+
+
+
 
 /**
  * @swagger
