@@ -11,6 +11,7 @@ const setupSwagger = require('./swagger');
 setupSwagger(app); 
 
 app.use('/pokemons', require('./routes/pokemons'));
+app.use('/moves', require('./routes/moves'));
 
 const port = process.env.PORT || 8080;
 

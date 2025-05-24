@@ -1,0 +1,188 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pokémon API",
+    "version": "1.0.0",
+    "description": "Generating my Pokedex"
+  },
+  "paths": {
+    "/pokemons": {
+      "get": {
+        "summary": "Get all Pokémon",
+        "responses": {
+          "200": {
+            "description": "List of Pokémon"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Pokémon",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "type": { "type": "string" },
+                  "releaseDate": { "type": "string", "format": "date" }
+                },
+                "required": ["name", "type", "releaseDate"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Invalid input" }
+        }
+      }
+    },
+    "/pokemons/{id}": {
+      "get": {
+        "summary": "Get a Pokémon by ID",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "string" }
+        }],
+        "responses": {
+          "200": { "description": "A Pokémon object" },
+          "404": { "description": "Not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a Pokémon",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "string" }
+        }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "type": { "type": "string" },
+                  "releaseDate": { "type": "string", "format": "date" }
+                },
+                "required": ["name", "type", "releaseDate"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Updated" },
+          "400": { "description": "Invalid input" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a Pokémon",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "string" }
+        }],
+        "responses": {
+          "200": { "description": "Deleted" },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/moves": {
+      "get": {
+        "summary": "Get all moves",
+        "responses": {
+          "200": { "description": "List of all moves" }
+        }
+      },
+      "post": {
+        "summary": "Create a new move",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "type": { "type": "string" },
+                  "power": { "type": "number" }
+                },
+                "required": ["name", "type", "power"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Invalid input" }
+        }
+      }
+    },
+    "/moves/{id}": {
+      "get": {
+        "summary": "Get a move by ID",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "string" }
+        }],
+        "responses": {
+          "200": { "description": "A move object" },
+          "404": { "description": "Not found" }
+        }
+      },
+      "put": {
+        "summary": "Update a move",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "string" }
+        }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "type": { "type": "string" },
+                  "power": { "type": "number" }
+                },
+                "required": ["name", "type", "power"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Updated" },
+          "400": { "description": "Invalid input" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a move",
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": { "type": "string" }
+        }],
+        "responses": {
+          "200": { "description": "Deleted" },
+          "404": { "description": "Not found" }
+        }
+      }
+    }
+  }
+}
