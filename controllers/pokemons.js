@@ -24,6 +24,18 @@ const getSinglePokemon = async (req, res) => {
   }
 };
 
+// Create Pokemon
+const createPokemon = async (req, res) => {
+  try {
+    const { name, type, releaseDate } = req.body;
+    const db = getDb();
+    const result = await db.collection('pokemons').insertOne({ name, type, releaseDate });
+    res.status(201).json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // Update Pokemon by ID
 const updatePokemon = async (req, res) => {
   try {
