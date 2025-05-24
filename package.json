@@ -2,7 +2,7 @@
   "name": "cse341",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,15 +17,5 @@
   "bugs": {
     "url": "https://github.com/JustAParrot/cse341/issues"
   },
-  "homepage": "https://github.com/JustAParrot/cse341#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "eslint": "^9.26.0",
-    "express": "^5.1.0",
-    "express-validator": "^7.2.1",
-    "mongodb": "^6.16.0",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
-  }
+  "homepage": "https://github.com/JustAParrot/cse341#readme"
 }
