@@ -10,7 +10,7 @@ const validate = (req, res, next) => {
   next();
 };
 
-// CRUD Stuff
+// CRUD Stuff or Pokedex
 router.get('/', pokemonsController.getAllPokemons);
 
 router.get('/:id',
