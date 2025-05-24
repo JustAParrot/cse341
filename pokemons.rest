@@ -10,3 +10,16 @@ Content-Type: application/json
   "type": "Electric",
   "releaseDate": "1996-02-27"
 }
+
+### PUT update
+PUT https://cse341-s9x3.onrender.com/pokemons/6832249281a22867a131d762
+Content-Type: application/json
+
+{
+  "name": "Charmander",
+  "type": "Fire",
+  "releaseDate": "1996-02-27"
+}
+
+### DELETE
+DELETE https://cse341-s9x3.onrender.com/pokemons/pokemons/6832249281a22867a131d762

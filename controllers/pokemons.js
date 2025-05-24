@@ -1,21 +1,35 @@
+const { ObjectId } = require('mongodb');
 const { getDb } = require('../data/database');
 
-const getAllPokemons = async (req, res) => {
+const getSinglePokemon = async (req, res) => {
   try {
     const db = getDb();
-    const pokemons = await db.collection('pokemons').find().toArray();
-    res.status(200).json(pokemons);
+    const pokemon = await db.collection('pokemons').findOne({ _id: new ObjectId(req.params.id) });
+    if (!pokemon) return res.status(404).json({ error: 'Not found' });
+    res.status(200).json(pokemon);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-const createPokemon = async (req, res) => {
+const updatePokemon = async (req, res) => {
   try {
-    const { name, type, releaseDate } = req.body;
     const db = getDb();
-    const result = await db.collection('pokemons').insertOne({ name, type, releaseDate });
-    res.status(201).json(result);
+    const result = await db.collection('pokemons').updateOne(
+      { _id: new ObjectId(req.params.id) },
+      { $set: req.body }
+    );
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+const deletePokemon = async (req, res) => {
+  try {
+    const db = getDb();
+    const result = await db.collection('pokemons').deleteOne({ _id: new ObjectId(req.params.id) });
+    res.status(200).json(result);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -23,5 +37,8 @@ const createPokemon = async (req, res) => {
 
 module.exports = {
   getAllPokemons,
-  createPokemon
+  getSinglePokemon,
+  createPokemon,
+  updatePokemon,
+  deletePokemon
 };
