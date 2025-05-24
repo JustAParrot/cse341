@@ -1,6 +1,18 @@
 const { ObjectId } = require('mongodb');
 const { getDb } = require('../data/database');
 
+// See All Pokedex
+const getAllPokemons = async (req, res) => {
+  try {
+    const db = getDb();
+    const pokemons = await db.collection('pokemons').find().toArray();
+    res.status(200).json(pokemons);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// See Pokemon by ID
 const getSinglePokemon = async (req, res) => {
   try {
     const db = getDb();
@@ -12,6 +24,7 @@ const getSinglePokemon = async (req, res) => {
   }
 };
 
+// Update Pokemon by ID
 const updatePokemon = async (req, res) => {
   try {
     const db = getDb();
@@ -25,6 +38,7 @@ const updatePokemon = async (req, res) => {
   }
 };
 
+// Delete Pokemon by ID
 const deletePokemon = async (req, res) => {
   try {
     const db = getDb();
