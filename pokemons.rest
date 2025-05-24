@@ -1,0 +1,12 @@
+### Get all Pokémon
+GET http://localhost:8080/pokemons
+
+### Create a Pokémon
+POST http://localhost:8080/pokemons
+Content-Type: application/json
+
+{
+  "name": "Pikachu",
+  "type": "Electric",
+  "releaseDate": "1996-02-27"
+}

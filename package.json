@@ -1,21 +1,37 @@
 {
-  "name": "cse341",
+  "name": "pokemon-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple REST API for managing Pokémon data",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JustAParrot/cse341.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "pokemon",
+    "api",
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "Pepe El Pollo",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/JustAParrot/cse341/issues"
   },
-  "homepage": "https://github.com/JustAParrot/cse341#readme"
+  "homepage": "https://github.com/JustAParrot/cse341#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
