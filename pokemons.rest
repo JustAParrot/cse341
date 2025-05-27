@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### PUT update
-PUT https://cse341-s9x3.onrender.com/pokemons/6832249281a22867a131d762
+PUT https://cse341-s9x3.onrender.com/pokemons/6832313e70d9328e68bbdc5c
 Content-Type: application/json
 
 {
@@ -45,7 +45,7 @@ Content-Type: application/json
 }
 
 ### PUT update a move
-PUT https://cse341-s9x3.onrender.com/moves/{id}
+PUT https://cse341-s9x3.onrender.com/moves/6832316970d9328e68bbdc5e
 Content-Type: application/json
 
 {

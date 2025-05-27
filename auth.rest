@@ -1,0 +1,28 @@
+### Register a new user
+POST https://your-app.onrender.com/auth/register
+Content-Type: application/json
+
+{
+  "email": "ash.ketchum@pallet.com",
+  "password": "pikachu123"
+}
+
+### Log in as user
+POST https://your-app.onrender.com/auth/login
+Content-Type: application/json
+
+{
+  "email": "ash.ketchum@pallet.com",
+  "password": "pikachu123"
+}
+
+### Test protected POST (replace token after login)
+POST https://your-app.onrender.com/pokemons
+Content-Type: application/json
+Authorization: Bearer <paste-your-jwt-token-here>
+
+{
+  "name": "Bulbasaur",
+  "type": "Grass",
+  "releaseDate": "1996-02-27"
+}

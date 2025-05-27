@@ -5,18 +5,77 @@
     "version": "1.0.0",
     "description": "Generating my Pokedex"
   },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    { "bearerAuth": [] }
+  ],
   "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "User created" },
+          "400": { "description": "Validation error or user exists" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login and receive a JWT token",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["email", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "JWT returned" },
+          "400": { "description": "Invalid credentials" }
+        }
+      }
+    },
     "/pokemons": {
       "get": {
         "summary": "Get all Pokémon",
         "responses": {
-          "200": {
-            "description": "List of Pokémon"
-          }
+          "200": { "description": "List of Pokémon" }
         }
       },
       "post": {
         "summary": "Create a new Pokémon",
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -55,6 +114,7 @@
       },
       "put": {
         "summary": "Update a Pokémon",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [{
           "in": "path",
           "name": "id",
@@ -84,6 +144,7 @@
       },
       "delete": {
         "summary": "Delete a Pokémon",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [{
           "in": "path",
           "name": "id",
@@ -105,6 +166,7 @@
       },
       "post": {
         "summary": "Create a new move",
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -143,6 +205,7 @@
       },
       "put": {
         "summary": "Update a move",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [{
           "in": "path",
           "name": "id",
@@ -172,6 +235,7 @@
       },
       "delete": {
         "summary": "Delete a move",
+        "security": [{ "bearerAuth": [] }],
         "parameters": [{
           "in": "path",
           "name": "id",

@@ -1,3 +1,4 @@
+const verifyToken = require('../middleware/verifyToken');
 const express = require('express');
 const { body, param, validationResult } = require('express-validator');
 const router = express.Router();
@@ -20,6 +21,7 @@ router.get('/:id',
 );
 
 router.post('/',
+  verifyToken,  
   body('name').notEmpty().withMessage('Name is required'),
   body('type').notEmpty().withMessage('Type is required'),
   body('releaseDate').isDate().withMessage('Valid release date required'),
@@ -28,6 +30,7 @@ router.post('/',
 );
 
 router.put('/:id',
+  verifyToken,  
   param('id').isMongoId(),
   body('name').notEmpty(),
   body('type').notEmpty(),
@@ -37,9 +40,11 @@ router.put('/:id',
 );
 
 router.delete('/:id',
+  verifyToken,  
   param('id').isMongoId(),
   validate,
   pokemonsController.deletePokemon
 );
+
 
 module.exports = router;
