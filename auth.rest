@@ -3,7 +3,7 @@ POST https://your-app.onrender.com/auth/register
 Content-Type: application/json
 
 {
-  "email": "ash.ketchum@pallet.com",
+  "email": "ash.ketchum@pallettown.com",
   "password": "pikachu123"
 }
 
@@ -12,14 +12,14 @@ POST https://your-app.onrender.com/auth/login
 Content-Type: application/json
 
 {
-  "email": "ash.ketchum@pallet.com",
+  "email": "ash.ketchum@pallettown.com",
   "password": "pikachu123"
 }
 
-### Test protected POST (replace token after login)
+### Test protected POST 
 POST https://your-app.onrender.com/pokemons
 Content-Type: application/json
-Authorization: Bearer <paste-your-jwt-token-here>
+Authorization: Bearer <token>
 
 {
   "name": "Bulbasaur",
