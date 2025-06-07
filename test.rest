@@ -1,0 +1,61 @@
+### Get all Pokémon
+GET https://cse341-s9x3.onrender.com/pokemon
+
+### Get a single Pokémon by ID
+GET https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
+
+### Create a new Pokémon
+POST https://cse341-s9x3.onrender.com/pokemon
+Content-Type: application/json
+
+{
+  "name": "Charmander",
+  "type": ["Fire"],
+  "level": 12,
+  "trainer": "Ash"
+}
+
+### Update a Pokémon
+PUT https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
+Content-Type: application/json
+
+{
+  "name": "Charmeleon",
+  "type": ["Fire"],
+  "level": 22,
+  "trainer": "Ash"
+}
+
+### Delete a Pokémon
+DELETE https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
+
+### Get all Items
+GET https://cse341-s9x3.onrender.com/items
+
+### Get a single Item by ID
+GET https://cse341-s9x3.onrender.com/items/{itemId}
+
+### Create a new Item
+POST https://cse341-s9x3.onrender.com/items
+Content-Type: application/json
+
+{
+  "name": "Potion",
+  "effect": "Heals 20 HP",
+  "quantity": 5,
+  "trainer": "Ash"
+}
+
+### Update an Item
+PUT https://cse341-s9x3.onrender.com/items/{itemId}
+Content-Type: application/json
+
+{
+  "name": "Super Potion",
+  "effect": "Heals 50 HP",
+  "quantity": 2,
+  "trainer": "Ash"
+}
+
+### Delete an Item
+DELETE https://cse341-s9x3.onrender.com/items/{itemId}

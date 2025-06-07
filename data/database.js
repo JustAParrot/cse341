@@ -1,18 +1,17 @@
-const { MongoClient } = require('mongodb');
-const uri = process.env.MONGODB_URI;
+const mongoose = require("mongoose")
+require("dotenv").config()
 
-let client;
-
-const initDb = (callback) => {
-  if (client) return callback(null, client);
-  MongoClient.connect(uri)
-    .then((connectedClient) => {
-      client = connectedClient;
-      callback(null, client);
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     })
-    .catch((err) => callback(err));
-};
+    console.log("MongoDB connected successfully")
+  } catch (err) {
+    console.error("MongoDB connection error:", err)
+    process.exit(1)
+  }
+}
 
-const getDb = () => client.db('pokemonDB');
-
-module.exports = { initDb, getDb };
+module.exports = connectDB

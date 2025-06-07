@@ -1,26 +1,33 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const mongodb = require('./data/database');
-
-dotenv.config();
-const app = express(); 
-
-app.use(express.json());
-
-const setupSwagger = require('./swagger'); 
-setupSwagger(app); 
-
-app.use('/auth', require('./routes/auth'));
-app.use('/pokemons', require('./routes/pokemons'));
-app.use('/moves', require('./routes/moves'));
+const express = require("express")
+const dotenv = require("dotenv") 
+dotenv.config() 
+const cors = require("cors")
+const connectDB = require("./data/database")
+const setupSwagger = require("./swagger")
 
 
-const port = process.env.PORT || 8080;
+dotenv.config()
+const app = express()
 
-mongodb.initDb((err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
-  }
-});
+// Middleware
+app.use(cors())
+app.use(express.json())
+
+// Routes
+const pokemonRoutes = require("./routes/pokemonRoutes")
+app.use("/pokemon", pokemonRoutes)
+
+const itemRoutes = require("./routes/itemRoutes")
+app.use("/items", itemRoutes)
+
+
+// Swagger
+setupSwagger(app)
+
+// Connect to DB and Start Server
+connectDB().then(() => {
+  const PORT = process.env.PORT || 3000
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`)
+  })
+})
