@@ -17,83 +17,388 @@
   ],
   "paths": {
     "/pokemon": {
-      "get": { "summary": "Get all Pokémon", "responses": { "200": { "description": "List of Pokémon" }, "500": { "description": "Server error" } } },
+      "get": {
+        "summary": "Get all Pokémon",
+        "responses": {
+          "200": {
+            "description": "List of Pokémon"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
       "post": {
         "summary": "Create a new Pokémon",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/Pokemon" }
+              "schema": {
+                "$ref": "#/components/schemas/Pokemon"
+              }
             }
           }
         },
-        "responses": { "201": { "description": "Pokémon created" }, "400": { "description": "Validation error" } }
+        "responses": {
+          "201": {
+            "description": "Pokémon created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
       }
     },
     "/pokemon/{pokemonId}": {
       "get": {
         "summary": "Get Pokémon by ID",
-        "parameters": [{ "name": "pokemonId", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Pokémon found" }, "404": { "description": "Pokémon not found" } }
+        "parameters": [
+          {
+            "name": "pokemonId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokémon found"
+          },
+          "404": {
+            "description": "Pokémon not found"
+          }
+        }
       },
       "put": {
         "summary": "Update a Pokémon",
-        "parameters": [{ "name": "pokemonId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "parameters": [
+          {
+            "name": "pokemonId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/Pokemon" }
+              "schema": {
+                "$ref": "#/components/schemas/Pokemon"
+              }
             }
           }
         },
-        "responses": { "200": { "description": "Pokémon updated" }, "400": { "description": "Validation error" } }
+        "responses": {
+          "200": {
+            "description": "Pokémon updated"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
       },
       "delete": {
         "summary": "Delete a Pokémon",
-        "parameters": [{ "name": "pokemonId", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Pokémon deleted" }, "404": { "description": "Pokémon not found" } }
+        "parameters": [
+          {
+            "name": "pokemonId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokémon deleted"
+          },
+          "404": {
+            "description": "Pokémon not found"
+          }
+        }
       }
     },
     "/items": {
-      "get": { "summary": "Get all items", "responses": { "200": { "description": "List of items" }, "500": { "description": "Server error" } } },
+      "get": {
+        "summary": "Get all items",
+        "responses": {
+          "200": {
+            "description": "List of items"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
       "post": {
         "summary": "Create a new item",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/Item" }
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
             }
           }
         },
-        "responses": { "201": { "description": "Item created" }, "400": { "description": "Validation error" } }
+        "responses": {
+          "201": {
+            "description": "Item created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
       }
     },
     "/items/{itemId}": {
       "get": {
         "summary": "Get item by ID",
-        "parameters": [{ "name": "itemId", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Item found" }, "404": { "description": "Item not found" } }
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item found"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
       },
       "put": {
         "summary": "Update an item",
-        "parameters": [{ "name": "itemId", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/Item" }
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
             }
           }
         },
-        "responses": { "200": { "description": "Item updated" }, "400": { "description": "Validation error" } }
+        "responses": {
+          "200": {
+            "description": "Item updated"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
       },
       "delete": {
         "summary": "Delete an item",
-        "parameters": [{ "name": "itemId", "in": "path", "required": true, "schema": { "type": "string" } }],
-        "responses": { "200": { "description": "Item deleted" }, "404": { "description": "Item not found" } }
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item deleted"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      }
+    },
+    "/battles": {
+      "get": {
+        "summary": "Get all battles",
+        "responses": {
+          "200": {
+            "description": "List of battles"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new battle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Battle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Battle created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
+      }
+    },
+    "/battles/{battleId}": {
+      "get": {
+        "summary": "Get battle by ID",
+        "parameters": [
+          {
+            "name": "battleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Battle found"
+          },
+          "404": {
+            "description": "Battle not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a battle",
+        "parameters": [
+          {
+            "name": "battleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Battle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Battle updated"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a battle",
+        "parameters": [
+          {
+            "name": "battleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Battle deleted"
+          },
+          "404": {
+            "description": "Battle not found"
+          }
+        }
+      }
+    },
+    "/trainers/register": {
+      "post": {
+        "summary": "Register new trainer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trainer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Trainer registered"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
+      }
+    },
+    "/trainers/login": {
+      "post": {
+        "summary": "Login trainer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login success"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          }
+        }
       }
     }
   },
@@ -102,23 +407,104 @@
       "Pokemon": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" },
-          "type": { "type": "array", "items": { "type": "string" } },
-          "level": { "type": "integer", "minimum": 1 },
-          "trainer": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trainer": {
+            "type": "string"
+          }
         },
-        "required": ["name", "type", "level", "trainer"]
+        "required": [
+          "name",
+          "type",
+          "level",
+          "trainer"
+        ]
       },
       "Item": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" },
-          "effect": { "type": "string" },
-          "quantity": { "type": "integer", "minimum": 1 },
-          "trainer": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "effect": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trainer": {
+            "type": "string"
+          }
         },
-        "required": ["name", "effect", "quantity", "trainer"]
+        "required": [
+          "name",
+          "effect",
+          "quantity",
+          "trainer"
+        ]
       }
+    },
+    "Battle": {
+      "type": "object",
+      "properties": {
+        "trainer1": {
+          "type": "string"
+        },
+        "trainer2": {
+          "type": "string"
+        },
+        "winner": {
+          "type": "string"
+        },
+        "pokemon1": {
+          "type": "string"
+        },
+        "pokemon2": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "trainer1",
+        "trainer2",
+        "winner",
+        "pokemon1",
+        "pokemon2"
+      ]
+    },
+    "Trainer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "password"
+      ]
     }
   }
 }

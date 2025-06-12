@@ -20,6 +20,12 @@ app.use("/pokemon", pokemonRoutes)
 const itemRoutes = require("./routes/itemRoutes")
 app.use("/items", itemRoutes)
 
+const authRoutes = require("./routes/authRoutes")
+app.use("/auth", authRoutes)
+
+const battleRoutes = require("./routes/battleRoutes")
+app.use("/battles", battleRoutes)
+
 
 // Swagger
 setupSwagger(app)

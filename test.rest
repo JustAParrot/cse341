@@ -29,6 +29,10 @@ Content-Type: application/json
 ### Delete a Pokémon
 DELETE https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
 
+
+#######################################################################################
+
+
 ### Get all Items
 GET https://cse341-s9x3.onrender.com/items
 
@@ -59,3 +63,78 @@ Content-Type: application/json
 
 ### Delete an Item
 DELETE https://cse341-s9x3.onrender.com/items/{itemId}
+
+
+#######################################################################################
+
+
+### Get all Battles
+GET https://cse341-s9x3.onrender.com/battles
+
+### Get a single Battle by ID
+GET https://cse341-s9x3.onrender.com/battles/{battleId}
+
+### Create a new Battle
+POST https://cse341-s9x3.onrender.com/battles
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+
+{
+  "trainer1": "Ash",
+  "trainer2": "Gary",
+  "winner": "Ash",
+  "location": "Pallet Town"
+}
+
+### Update a Battle
+PUT https://cse341-s9x3.onrender.com/battles/{battleId}
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+
+{
+  "trainer1": "Ash",
+  "trainer2": "Brock",
+  "winner": "Brock",
+  "location": "Pewter City"
+}
+
+### Delete a Battle
+DELETE https://cse341-s9x3.onrender.com/battles/{battleId}
+Authorization: Bearer {jwt_token}
+
+
+#######################################################################################
+
+
+### Get all Trainers
+GET https://cse341-s9x3.onrender.com/trainers
+Authorization: Bearer {jwt_token}
+
+### Get a single Trainer by ID
+GET https://cse341-s9x3.onrender.com/trainers/{trainerId}
+Authorization: Bearer {jwt_token}
+
+### Create a new Trainer
+POST https://cse341-s9x3.onrender.com/trainers
+Content-Type: application/json
+
+{
+  "name": "Ash Ketchum",
+  "email": "ash@example.com",
+  "password": "pikachu123"
+}
+
+### Update a Trainer
+PUT https://cse341-s9x3.onrender.com/trainers/{trainerId}
+Content-Type: application/json
+Authorization: Bearer {jwt_token}
+
+{
+  "name": "Ash K.",
+  "email": "ash@example.com",
+  "password": "newpass456"
+}
+
+### Delete a Trainer
+DELETE https://cse341-s9x3.onrender.com/trainers/{trainerId}
+Authorization: Bearer {jwt_token}
