@@ -7,8 +7,12 @@
   },
   "servers": [
     {
+      "url": "https://cse341-s9x3.onrender.com",
+      "description": "Render deployment"
+    },
+    {
       "url": "http://localhost:3000",
-      "description": "Local server"
+      "description": "Local development"
     }
   ],
   "paths": {
