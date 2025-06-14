@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NGRjM2ZiMTM4NzY0YzhlMGQzMDJmNyIsImVtYWlsIjoiYXNoQGV4YW1wbGUuY29tIiwiaWF0IjoxNzQ5OTI2OTI1LCJleHAiOjE3NDk5MzA1MjV9.lsPnBCkK_1qNO2BCl4bKadpMD0zLxxaBvwxRof-UlUs
+@token = ''
 
 
 #######################################################################################
