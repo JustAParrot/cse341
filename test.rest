@@ -106,6 +106,15 @@ Authorization: Bearer {jwt_token}
 #######################################################################################
 
 
+### Login and get JWT token
+POST https://cse341-s9x3.onrender.com/auth/login
+Content-Type: application/json
+
+{
+  "email": "ash@example.com",
+  "password": "pikachu123"
+}
+
 ### Get all Trainers
 GET https://cse341-s9x3.onrender.com/trainers
 Authorization: Bearer {jwt_token}
