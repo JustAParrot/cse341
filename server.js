@@ -26,6 +26,9 @@ app.use("/auth", authRoutes)
 const battleRoutes = require("./routes/battleRoutes")
 app.use("/battles", battleRoutes)
 
+const trainerRoutes = require("./routes/trainerRoutes");
+app.use("/trainers", trainerRoutes);
+
 
 // Swagger
 setupSwagger(app)

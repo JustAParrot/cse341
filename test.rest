@@ -1,3 +1,9 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NGRjM2ZiMTM4NzY0YzhlMGQzMDJmNyIsImVtYWlsIjoiYXNoQGV4YW1wbGUuY29tIiwiaWF0IjoxNzQ5OTI2OTI1LCJleHAiOjE3NDk5MzA1MjV9.lsPnBCkK_1qNO2BCl4bKadpMD0zLxxaBvwxRof-UlUs
+
+
+#######################################################################################
+
+
 ### Get all Pokémon
 GET https://cse341-s9x3.onrender.com/pokemon
 
@@ -7,6 +13,7 @@ GET https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
 ### Create a new Pokémon
 POST https://cse341-s9x3.onrender.com/pokemon
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Charmander",
@@ -18,6 +25,7 @@ Content-Type: application/json
 ### Update a Pokémon
 PUT https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Charmeleon",
@@ -28,6 +36,7 @@ Content-Type: application/json
 
 ### Delete a Pokémon
 DELETE https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
+Authorization: Bearer {{token}}
 
 
 #######################################################################################
@@ -42,6 +51,7 @@ GET https://cse341-s9x3.onrender.com/items/{itemId}
 ### Create a new Item
 POST https://cse341-s9x3.onrender.com/items
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Potion",
@@ -53,6 +63,7 @@ Content-Type: application/json
 ### Update an Item
 PUT https://cse341-s9x3.onrender.com/items/{itemId}
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Super Potion",
@@ -63,6 +74,7 @@ Content-Type: application/json
 
 ### Delete an Item
 DELETE https://cse341-s9x3.onrender.com/items/{itemId}
+Authorization: Bearer {{token}}
 
 
 #######################################################################################
@@ -77,11 +89,13 @@ GET https://cse341-s9x3.onrender.com/battles/{battleId}
 ### Create a new Battle
 POST https://cse341-s9x3.onrender.com/battles
 Content-Type: application/json
-Authorization: Bearer {jwt_token}
+Authorization: Bearer {{token}}
 
 {
   "trainer1": "Ash",
   "trainer2": "Gary",
+  "pokemon1": "Pikachu",
+  "pokemon2": "Blastoise",
   "winner": "Ash",
   "location": "Pallet Town"
 }
@@ -89,22 +103,34 @@ Authorization: Bearer {jwt_token}
 ### Update a Battle
 PUT https://cse341-s9x3.onrender.com/battles/{battleId}
 Content-Type: application/json
-Authorization: Bearer {jwt_token}
+Authorization: Bearer {{token}}
 
 {
   "trainer1": "Ash",
-  "trainer2": "Brock",
-  "winner": "Brock",
-  "location": "Pewter City"
+  "trainer2": "Gary",
+  "pokemon1": "Squirtle",
+  "pokemon2": "Ponyta",
+  "winner": "Pepe",
+  "location": "Pallet Town"
 }
 
 ### Delete a Battle
 DELETE https://cse341-s9x3.onrender.com/battles/{battleId}
-Authorization: Bearer {jwt_token}
+Authorization: Bearer {{token}}
 
 
 #######################################################################################
 
+
+### Signup (Create a Trainer)
+POST https://cse341-s9x3.onrender.com/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Ash Ketchum",
+  "email": "ash@example.com",
+  "password": "pikachu123"
+}
 
 ### Login and get JWT token
 POST https://cse341-s9x3.onrender.com/auth/login
@@ -115,28 +141,22 @@ Content-Type: application/json
   "password": "pikachu123"
 }
 
+
+#######################################################################################
+
+
 ### Get all Trainers
 GET https://cse341-s9x3.onrender.com/trainers
-Authorization: Bearer {jwt_token}
+Authorization: Bearer {{token}}
 
 ### Get a single Trainer by ID
 GET https://cse341-s9x3.onrender.com/trainers/{trainerId}
-Authorization: Bearer {jwt_token}
-
-### Create a new Trainer
-POST https://cse341-s9x3.onrender.com/trainers
-Content-Type: application/json
-
-{
-  "name": "Ash Ketchum",
-  "email": "ash@example.com",
-  "password": "pikachu123"
-}
+Authorization: Bearer {{token}}
 
 ### Update a Trainer
 PUT https://cse341-s9x3.onrender.com/trainers/{trainerId}
 Content-Type: application/json
-Authorization: Bearer {jwt_token}
+Authorization: Bearer {{token}}
 
 {
   "name": "Ash K.",
@@ -146,4 +166,4 @@ Authorization: Bearer {jwt_token}
 
 ### Delete a Trainer
 DELETE https://cse341-s9x3.onrender.com/trainers/{trainerId}
-Authorization: Bearer {jwt_token}
+Authorization: Bearer {{token}}

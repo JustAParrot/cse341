@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const trainerController = require("../controllers/trainerController")
 const { trainerRules, checkTrainerData } = require("../middleware/validation")
-const authenticate = require("../middleware/authenticate")
+const authenticate = require("../middleware/auth")
 
 router.post("/register", trainerRules(), checkTrainerData, trainerController.registerTrainer)
 router.post("/login", trainerController.loginTrainer)
