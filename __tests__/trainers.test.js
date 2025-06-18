@@ -1,9 +1,14 @@
 const request = require("supertest")
 const app = require("../server")
 
-describe("GET /pokemon", () => {
-  it("should return a list of Pokémon", async () => {
-    const res = await request(app).get("/pokemon")
+const token = "" 
+
+describe("GET /trainers", () => {
+  it("should return a list of trainers", async () => {
+    const res = await request(app)
+      .get("/trainers")
+      .set("Authorization", `Bearer ${token}`)
+
     expect(res.statusCode).toBe(200)
     expect(Array.isArray(res.body)).toBe(true)
   })
