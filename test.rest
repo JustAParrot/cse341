@@ -1,13 +1,62 @@
 @token = ''
 
+#######################################################################################
+### Authentication
+
+### Signup (Create a Trainer)
+POST https://cse341-s9x3.onrender.com/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Ash Ketchum",
+  "email": "ash@example.com",
+  "password": "pikachu123"
+}
+
+### Login and get JWT token
+POST https://cse341-s9x3.onrender.com/auth/login
+Content-Type: application/json
+
+{
+  "email": "ash@example.com",
+  "password": "pikachu123"
+}
+
 
 #######################################################################################
+### Trainers
 
+### Get all Trainers
+GET https://cse341-s9x3.onrender.com/trainers
+Authorization: Bearer {{token}}
+
+### Get a Trainer by ID
+GET https://cse341-s9x3.onrender.com/trainers/{trainerId}
+Authorization: Bearer {{token}}
+
+### Update a Trainer
+PUT https://cse341-s9x3.onrender.com/trainers/{trainerId}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Ash K.",
+  "email": "ash@example.com",
+  "password": "newpass456"
+}
+
+### Delete a Trainer
+DELETE https://cse341-s9x3.onrender.com/trainers/{trainerId}
+Authorization: Bearer {{token}}
+
+
+#######################################################################################
+### Pokémon
 
 ### Get all Pokémon
 GET https://cse341-s9x3.onrender.com/pokemon
 
-### Get a single Pokémon by ID
+### Get a Pokémon by ID
 GET https://cse341-s9x3.onrender.com/pokemon/{pokemonId}
 
 ### Create a new Pokémon
@@ -40,12 +89,12 @@ Authorization: Bearer {{token}}
 
 
 #######################################################################################
-
+### Items
 
 ### Get all Items
 GET https://cse341-s9x3.onrender.com/items
 
-### Get a single Item by ID
+### Get an Item by ID
 GET https://cse341-s9x3.onrender.com/items/{itemId}
 
 ### Create a new Item
@@ -78,12 +127,12 @@ Authorization: Bearer {{token}}
 
 
 #######################################################################################
-
+### Battles
 
 ### Get all Battles
 GET https://cse341-s9x3.onrender.com/battles
 
-### Get a single Battle by ID
+### Get a Battle by ID
 GET https://cse341-s9x3.onrender.com/battles/{battleId}
 
 ### Create a new Battle
@@ -116,54 +165,4 @@ Authorization: Bearer {{token}}
 
 ### Delete a Battle
 DELETE https://cse341-s9x3.onrender.com/battles/{battleId}
-Authorization: Bearer {{token}}
-
-
-#######################################################################################
-
-
-### Signup (Create a Trainer)
-POST https://cse341-s9x3.onrender.com/auth/signup
-Content-Type: application/json
-
-{
-  "name": "Ash Ketchum",
-  "email": "ash@example.com",
-  "password": "pikachu123"
-}
-
-### Login and get JWT token
-POST https://cse341-s9x3.onrender.com/auth/login
-Content-Type: application/json
-
-{
-  "email": "ash@example.com",
-  "password": "pikachu123"
-}
-
-
-#######################################################################################
-
-
-### Get all Trainers
-GET https://cse341-s9x3.onrender.com/trainers
-Authorization: Bearer {{token}}
-
-### Get a single Trainer by ID
-GET https://cse341-s9x3.onrender.com/trainers/{trainerId}
-Authorization: Bearer {{token}}
-
-### Update a Trainer
-PUT https://cse341-s9x3.onrender.com/trainers/{trainerId}
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-  "name": "Ash K.",
-  "email": "ash@example.com",
-  "password": "newpass456"
-}
-
-### Delete a Trainer
-DELETE https://cse341-s9x3.onrender.com/trainers/{trainerId}
 Authorization: Bearer {{token}}

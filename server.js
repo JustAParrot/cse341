@@ -1,17 +1,30 @@
 const express = require("express")
-const dotenv = require("dotenv") 
-dotenv.config() 
+const dotenv = require("dotenv")
+dotenv.config()
 const cors = require("cors")
+const session = require("express-session")
+const passport = require("passport")
+require("./middleware/passport")
 const connectDB = require("./data/database")
 const setupSwagger = require("./swagger")
-
-
-dotenv.config()
 const app = express()
 
 // Middleware
 app.use(cors())
 app.use(express.json())
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true
+  }
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Routes
 const pokemonRoutes = require("./routes/pokemonRoutes")
@@ -26,9 +39,8 @@ app.use("/auth", authRoutes)
 const battleRoutes = require("./routes/battleRoutes")
 app.use("/battles", battleRoutes)
 
-const trainerRoutes = require("./routes/trainerRoutes");
-app.use("/trainers", trainerRoutes);
-
+const trainerRoutes = require("./routes/trainerRoutes")
+app.use("/trainers", trainerRoutes)
 
 // Swagger
 setupSwagger(app)
@@ -37,6 +49,6 @@ setupSwagger(app)
 connectDB().then(() => {
   const PORT = process.env.PORT || 3000
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
   })
 })
