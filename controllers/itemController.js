@@ -4,8 +4,10 @@ const Item = require("../models/itemModel")
 const getAllItems = async (req, res) => {
   try {
     const items = await Item.find()
+    console.log("Items fetched for test:", items.length)
     res.status(200).json(items)
   } catch (err) {
+    console.error("Error fetching items:", err.message)
     res.status(500).json({ error: "Failed to fetch items." })
   }
 }

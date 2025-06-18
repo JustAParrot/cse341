@@ -1,10 +1,12 @@
 const request = require("supertest")
 const app = require("../app") 
 const mongoose = require("mongoose")
+const Item = require("../models/itemModel")
 
 beforeAll(async () => {
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await Item.create({ name: "Potion", description: "Heals 20HP", price: 100 })
 })
+
 
 afterAll(async () => {
   await mongoose.connection.close()
