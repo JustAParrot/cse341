@@ -5,25 +5,22 @@ const Item = require("../models/itemModel")
 const Trainer = require("../models/trainerModel")
 
 beforeAll(async () => {
-  // Connect to DB if not already connected
-  if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(process.env.MONGODB_URI)
-  }
+  await mongoose.connect(process.env.MONGODB_URI)
 
-  // Create a trainer first
+  await Trainer.deleteMany({ email: "test@example.com" })
+
   const trainer = await Trainer.create({
     name: "Test Trainer",
     email: "test@example.com",
-    password: "123456" 
+    password: "123456"
   })
 
-  // Create a valid item
   await Item.create({
     name: "Potion",
-    description: "Restores health",
+    description: "Heals HP",
     price: 100,
     quantity: 5,
-    effect: "Heals 20HP",
+    effect: "Restore 20 HP",
     trainer: trainer._id
   })
 })

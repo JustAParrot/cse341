@@ -1,21 +1,22 @@
-require("dotenv").config()
 const request = require("supertest")
-const app = require("../server")
-const connectDB = require("../data/database")
+const mongoose = require("mongoose")
+const { app, startServer } = require("../server")
+
+let server
 
 beforeAll(async () => {
-  await connectDB()
-}, 10000) 
-
-describe("GET /battles", () => {
-  it("should return a list of battles", async () => {
-    const res = await request(app).get("/battles")
-    expect(res.statusCode).toBe(200)
-    expect(Array.isArray(res.body)).toBe(true)
-  }, 10000) 
+  server = await startServer()
 })
 
 afterAll(async () => {
-  const mongoose = require("mongoose")
   await mongoose.connection.close()
+  await server.close()
+})
+
+describe("GET /battles", () => {
+  it("should return a list of battles", async () => {
+    const res = await request(server).get("/battles")
+    expect(res.statusCode).toBe(200)
+    expect(Array.isArray(res.body)).toBe(true)
+  }, 10000)
 })

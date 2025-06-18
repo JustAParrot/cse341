@@ -1,15 +1,22 @@
 const request = require("supertest")
-const app = require("../server")
+const mongoose = require("mongoose")
+const { app, startServer } = require("../server")
 
-describe("GET /pokemon", () => {
-  it("should return a list of Pokémon", async () => {
-    const res = await request(app).get("/pokemon")
-    expect(res.statusCode).toBe(200)
-    expect(Array.isArray(res.body)).toBe(true)
-  })
+let server
+
+beforeAll(async () => {
+  server = await startServer()
 })
 
 afterAll(async () => {
-  const mongoose = require("mongoose")
   await mongoose.connection.close()
+  await server.close()
+})
+
+describe("GET /pokemon", () => {
+  it("should return a list of Pokémon", async () => {
+    const res = await request(server).get("/pokemon")
+    expect(res.statusCode).toBe(200)
+    expect(Array.isArray(res.body)).toBe(true)
+  }, 10000)
 })
