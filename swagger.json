@@ -468,7 +468,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Trainer"
+                "$ref": "#/components/schemas/TrainerUpdate"
               }
             }
           }
@@ -616,6 +616,20 @@
         "email",
         "password"
       ]
+    },
+    "TrainerUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
     }
   }
 }
