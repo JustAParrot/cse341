@@ -48,10 +48,19 @@ exports.getTrainerById = async (req, res) => {
 
 exports.updateTrainer = async (req, res) => {
   try {
-    const updated = await Trainer.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    const updated = await Trainer.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+        omitUndefined: true 
+      }
+    )
     if (!updated) return res.status(404).json({ error: "Trainer not found" })
     res.json(updated)
   } catch (err) {
+    console.error("Update failed:", err.message)
     res.status(400).json({ error: "Update failed" })
   }
 }

@@ -1,4 +1,4 @@
-@token = ''
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTM0OTQ1M2VhYjBkN2U5YWNhYjczNiIsImVtYWlsIjoiYXNoQGV4YW0uY29tIiwiaWF0IjoxNzUwMjk4MDUxLCJleHAiOjE3NTAzMDE2NTF9.-BRbAkChoALQxNvUBPV9Y1QdsJDk0dZiPgaWb3qzZIQ
 
 #######################################################################################
 ### Authentication
@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "name": "Ash Ketchum",
-  "email": "ash@example.com",
+  "email": "ash@exam.com",
   "password": "pikachu123"
 }
 
@@ -18,7 +18,7 @@ POST https://cse341-s9x3.onrender.com/auth/login
 Content-Type: application/json
 
 {
-  "email": "ash@example.com",
+  "email": "ash@exam.com",
   "password": "pikachu123"
 }
 
@@ -31,11 +31,11 @@ GET https://cse341-s9x3.onrender.com/trainers
 Authorization: Bearer {{token}}
 
 ### Get a Trainer by ID
-GET https://cse341-s9x3.onrender.com/trainers/{trainerId}
+GET https://cse341-s9x3.onrender.com/trainers/6853490da0fc92f12375a20e
 Authorization: Bearer {{token}}
 
 ### Update a Trainer
-PUT https://cse341-s9x3.onrender.com/trainers/{trainerId}
+PUT https://cse341-s9x3.onrender.com/trainers/6853490da0fc92f12375a20e
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
